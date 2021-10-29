@@ -1,0 +1,18 @@
+<h2 class="mt-5 mb-4">Details products</h2>
+<table class="table table-bordered">
+    <thead>
+        <th>QTY</th>
+        <th>DESCRIPTION</th>
+    </thead>
+    <tbody>
+        <tr *ngFor="let product of carItems">
+            <td class="text-center">
+                1
+            </td>
+            <td>
+                <app-card-producto [product]='product' [numTrunacte]='10' [detailCart]='true'
+                    [styleCard]="'max-width:25rem'" [have]='true' (remove)='removeCar($event)' [overview]='overview'></app-card-producto>
+            </td>
+        </tr>
+    </tbody>
+</table>

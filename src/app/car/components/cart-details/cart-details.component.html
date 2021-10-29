@@ -1,0 +1,19 @@
+<div class="spinner-border" role="status" *ngIf="loading">
+    <span class="visually-hidden">Loading...</span>
+</div>
+
+<div *ngIf=" carItems.length === 0 && loading == false; else showDetail ">
+    <div class="alert alert-info" role="alert">
+        <h4 class="alert-heading">You don't have items in your cart!</h4>
+        <hr>
+    </div>
+</div>
+<ng-template #showDetail>
+    <app-table-cart [carItems]='carItems'></app-table-cart>
+</ng-template>
+
+<div class="mt-5">
+    <button class="btn btn-secondary" routerLink='/products'><i class="fas fa-arrow-left"></i> Continue Shopping</button>
+    <button class="btn btn-danger float-end" *ngIf="carItems.length > 0 && loading == false" (click)="continue()">Checkout</button>
+</div>
+

@@ -1,0 +1,16 @@
+.img{
+    height: 100%;
+    width: auto;
+    cursor: pointer;
+}
+.show{
+    cursor: pointer;
+    color: blue;
+    text-decoration: underline blue; 
+}
+.card-title{
+    cursor: pointer;
+    &:hover{
+        text-decoration: underline black !important;
+    }
+}
