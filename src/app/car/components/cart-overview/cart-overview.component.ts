@@ -11,9 +11,7 @@ import { Router } from '@angular/router';
 export class CartOverviewComponent implements OnInit, AfterViewInit {
 
     order!: Order;
-    tax = 0;
-    subtotal = 0;
-    total = 0;
+    
     finish = false;
 
     constructor(private carService: CarService, private router: Router) {
@@ -33,10 +31,10 @@ export class CartOverviewComponent implements OnInit, AfterViewInit {
         }
 
         this.order.products.forEach( product => {
-            this.subtotal += product.price;
+            this.order.subtotal += product.price;
         });
-        this.tax = this.subtotal * 0.08;
-        this.total = this.subtotal + this.tax;
+        this.order.tax = this.order.subtotal * 0.08;
+        this.order.total = this.order.subtotal + this.order.tax;
     }
 
     finishOrder(): void{

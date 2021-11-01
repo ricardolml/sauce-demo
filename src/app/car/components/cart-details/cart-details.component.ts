@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnDestroy, OnInit, Output, AfterViewInit } from '@angular/core';
+import { Component, OnDestroy, OnInit, Output, AfterViewInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { CarService } from '../../services/car.service';
 import { Subscription } from 'rxjs';
@@ -19,6 +19,10 @@ export class CartDetailsComponent implements OnInit, OnDestroy, AfterViewInit {
         name: '',
         lastName: '',
         address: '',
+        subtotal: 0,
+        tax: 0,
+        total: 0,
+        date: new Date(),
         products: []
     };
     constructor(private carService: CarService , private router: Router) { }

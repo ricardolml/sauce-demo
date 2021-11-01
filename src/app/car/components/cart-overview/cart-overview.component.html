@@ -20,15 +20,15 @@
                 </tr>
                 <tr>
                     <td>Item total:</td>
-                    <td>{{subtotal |currency}}</td>
+                    <td>{{ order.subtotal |currency}}</td>
                 </tr>
                 <tr>
                     <td>Tax:</td>
-                    <td>{{ tax |number:'1.0-2' |currency }}</td>
+                    <td>{{ order.tax |number:'1.0-2' |currency }}</td>
                 </tr>
                 <tr>
                     <td>Total:</td>
-                    <td>{{ total |number:'1.0-2' |currency}}</td>
+                    <td>{{ order.total |number:'1.0-2' |currency}}</td>
                 </tr>
             </tbody>
         </table>

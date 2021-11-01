@@ -31,7 +31,7 @@ export class AuthService {
         this.user = user;
     }
 
-    async logout(): Promise<void>{
+    logout(): void{
         localStorage.clear();
         this.user = this.loadingStorage();
         this.router.navigateByUrl('/auth');

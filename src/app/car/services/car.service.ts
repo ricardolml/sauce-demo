@@ -5,7 +5,6 @@ import { map } from 'rxjs/operators';
 import { User } from '../../auth/interfaces/user.interface';
 import { Product } from '../../products/interfaces/product.interface';
 import { AuthService } from '../../auth/services/auth.service';
-import { HttpClient } from '@angular/common/http';
 import { Order } from 'src/app/orders/interface/order.interface';
 @Injectable({
     providedIn: 'root'
@@ -17,7 +16,7 @@ export class CarService {
     order = new EventEmitter<Order>();
     idUser: string;
 
-    constructor( private firebase: AngularFirestore, private authService: AuthService, private http: HttpClient ) {
+    constructor( private firebase: AngularFirestore, private authService: AuthService) {
         this.idUser = this.authService.user.id;
     }
 

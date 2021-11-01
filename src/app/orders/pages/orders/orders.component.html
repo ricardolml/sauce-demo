@@ -1,0 +1,76 @@
+<div class="container-fluid">
+    <app-header [itemsMenu]='itemsMenu' [showCar]='true'></app-header>
+    <hr>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="accordion" id="accordionExample">
+
+                    <div class="accordion-item" *ngFor="let order of orders; let i = index">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed fw-bold" type="button" data-bs-toggle="collapse"
+                                [attr.data-bs-target]="'#colapse'+i" aria-expanded="false" aria-controls="collapseTwo">
+                                Order number #{{ i + 1 }} - {{ order.date |date}}
+                            </button>
+                        </h2>
+                        <div id="colapse{{i}}" class="accordion-collapse collapse" data-bs-parent="#accordionExample">
+                            <div class="accordion-body">
+                                <div class="row">
+
+                                    <div class="col-sm-6">
+                                        <table class="table table-bordered">
+                                            <tbody>
+                                                <tr>
+                                                    <td>Payment Information</td>
+                                                    <td>SauceCard #3133</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Shipping Information:</td>
+                                                    <td>FREE PONY EXPRESS DELIVERY!</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Item total:</td>
+                                                    <td>{{ order.subtotal |currency}}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Tax:</td>
+                                                    <td>{{ order.tax |number:'1.0-2' |currency }}</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>Total:</td>
+                                                    <td>{{ order.total |number:'1.0-2' |currency}}</td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    <div class="col-sm-6">
+                                        <table class="table table-bordered">
+                                            
+                                            <tbody>
+                                                <tr *ngFor="let product of order.products">
+                                                    <td>
+                                                        <app-card-producto [product]='product' [numTrunacte]='10'
+                                                            [detailCart]='true' [styleCard]="'max-width:25rem'" [have]='true'
+                                                            [overview]='true'></app-card-producto>
+                                                    </td>
+                                                </tr>
+                                            </tbody>
+                                        </table>
+                                        
+                                    </div>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+
+
+            </div>
+        </div>
+    </div>
+
+</div>
