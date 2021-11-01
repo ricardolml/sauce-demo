@@ -1,0 +1,27 @@
+<div [style]="styleCard" class="container-card">
+    <div class="card shadow mb-3 animate__animated animate__fadeIn">
+        <div class="row g-0 ">
+            <div class="col-md-4">
+                <img [src]=" product.img |img " class="img-fluid rounded-star img" [alt]="product.name" (click)="detailProduct()">
+            </div>
+            <div class="col-md-8">
+                <div class="card-body">
+                    <h5 class="card-title" (click)="detailProduct()" >{{ product.name }}</h5>
+                    <p class="card-text text-left"> {{ (!showTextComplete) ? (product.description | truncateText : numTrunacte) : product.description }} 
+                        <span class="show" (click)="showTextComplete = !showTextComplete">{{ (showTextComplete) ? '...show less' : '...show more' }}</span> 
+                    </p>
+                    <hr>
+                    <div class="row">
+                        <div class="col-6">
+                            <p class="card-text card-link"><small class="text-muted fs-5">{{ product.price |currency }}</small></p>
+                        </div>
+                        <div class="col">
+                            <button class="btn btn-outline-danger btn-sm float-end mb-2" (click)="addCar()" *ngIf="!have && !detailCart">Add to card</button>
+                            <button class="btn btn-outline-secondary btn-sm float-end mb-2" (click)="removeCar()" *ngIf="have && !overview">Remove card</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> 
+</div>

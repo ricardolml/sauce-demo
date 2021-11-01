@@ -1,0 +1,51 @@
+<div class="row" *ngIf="!finish ; else showFinish">
+    <div class="col">
+        <app-table-cart [carItems]='order.products' [overview]='true'></app-table-cart>
+    </div>
+    <div class="col">
+        <h2 class="mt-5 mb-4">Payment Information</h2>
+        <table class="table table-bordered">
+            <thead>
+                <th>-</th>
+                <th>-</th>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Payment Information</td>
+                    <td>SauceCard #31337</td>
+                </tr>
+                <tr>
+                    <td>Shipping Information:</td>
+                    <td>FREE PONY EXPRESS DELIVERY!</td>
+                </tr>
+                <tr>
+                    <td>Item total:</td>
+                    <td>{{ order.subtotal |currency}}</td>
+                </tr>
+                <tr>
+                    <td>Tax:</td>
+                    <td>{{ order.tax |number:'1.0-2' |currency }}</td>
+                </tr>
+                <tr>
+                    <td>Total:</td>
+                    <td>{{ order.total |number:'1.0-2' |currency}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="d-grid gap-2 mt-3">
+            <button class="btn btn-outline-danger float-end" (click)="finishOrder()">Finish</button>
+        </div>
+    </div>
+</div>
+
+<ng-template #showFinish>
+    <div class="alert text-center" role="alert">
+        <h4 class="alert-heading">THANK YOU FOR YOUR ORDER!</h4>
+        <p>Your order has been dispatched, and will arrive just as fast as the pony can get there!.</p>
+        <hr>
+        <img [src]=" 'order/pony-expres.png'|img " alt="pony-expres" class="img-fluid" >
+        <br>
+        <button class="btn btn-outline-secondary mt-4" routerLink='/products'>Go Home</button>
+      </div>
+</ng-template>
+
